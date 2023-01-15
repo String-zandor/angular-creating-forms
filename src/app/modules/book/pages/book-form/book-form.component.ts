@@ -13,6 +13,7 @@ export class BookFormComponent implements OnInit{
   status: string = 'NEW';
   bookForEdit?: Book;
   bookForm: FormGroup = this.fb.group({
+    id: [0],
     name: [''],
     authors: this.fb.array(['']),
     isbn: ['']

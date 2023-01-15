@@ -1,28 +1,41 @@
-<h2>{{status}} BLOG</h2>
-<form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
-    <label for="title">Title: </label>
-    <input id="title" type="text" formControlName="title" /> 
-    <br><br>
+<mat-card class="blog-form-card">
+    <mat-card-header>{{status}} BLOG</mat-card-header>
+    <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+        <mat-card-content>
+            <mat-form-field appearance="fill">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="description" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Author</mat-label>
+                <input matInput formControlName="author" />
+            </mat-form-field>
 
-    <label for="description">Description: </label>
-    <input id="description" type="text" formControlName="description" />
-    <br><br>
+            <div formArrayName="comments">
+                <label>Comments</label>
+                <div *ngFor="let _ of comments.controls; index as i">
+                    <mat-form-field appearance="fill" class="comment-field">
+                        <input matInput [formControlName]="i" />
+                    </mat-form-field>
+                    <button mat-mini-fab color="warn" (click)="deleteComment(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <button type="button" mat-mini-fab (click)="addComment()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
 
-    <label for="author">Author: </label>
-    <input id="author" type="text" formControlName="author" />
-    <br><br>
-
-    <label for="comments">Comments: </label>
-    <div formArrayName="comments">
-        <div *ngFor="let _ of comments.controls; index as i">
-            <input type="text" [formControlName]="i"/>
-            <button type="button" (click)="deleteComment(i)" >Delete</button>
-        </div>
-        <button type="button" (click)="addComment()" >+ Comment</button>
-    </div>
-    <br>
-
-    <button type="submit">Save</button>
-    <button type="button" (click)="clear()">Clear</button>
-
-</form>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button type="submit">SAVE</button>
+            <button mat-button type="button" (click)="clear()">CLEAR</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

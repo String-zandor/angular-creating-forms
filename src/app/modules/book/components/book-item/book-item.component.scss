@@ -1,0 +1,14 @@
+li {
+    list-style-type: none;
+}
+
+.book-card {
+    background-color: #E7F6F2;
+    margin: 3% auto;
+    width: 50%;
+}
+
+.book-card .delete-button:hover {
+    background-color:#F44336;
+    color: white;
+}

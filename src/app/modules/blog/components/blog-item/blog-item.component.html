@@ -1,31 +1,25 @@
-<div *ngIf="blog">
-    <table>
-        <tr>
-            <td>ID: </td>
-            <td>{{blog.id}}</td>
-        </tr>
-        <tr>
-            <td>Title: </td>
-            <td>{{blog.title}}</td>
-        </tr>
-        <tr>
-            <td>Description: </td>
-            <td>{{blog.description}}</td>
-        </tr>
-        <tr>
-            <td>Author: </td>
-            <td>{{blog.author}}</td>
-        </tr>
-        <tr>
-            <td>Comments: </td>
-            <td>
-                <span *ngFor="let comment of blog.comments">
-                    {{comment}} <br>
-                </span>
-            </td>
-        </tr>
-    </table>
-</div>
-<button (click)="requestEdit()">Edit</button>
-<button (click)="requestDelete()">Delete</button>
-<br><br>
+<mat-card class="blog-card" *ngIf="blog">
+    <mat-card-header>
+        <mat-card-title>{{blog.title}}</mat-card-title>
+        <mat-card-subtitle>{{blog.description}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>ID: {{blog.id}}</p>
+        <span>Author:</span>
+        <ul>
+            <li>{{blog.author}}</li>
+        </ul>
+
+
+        <span>Comments</span>
+        <ul>
+            <div *ngFor="let comment of blog.comments">
+                <li> <em> "{{comment}}" </em> </li>
+            </div>
+        </ul>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-button (click)="requestEdit()" >EDIT</button>
+        <button mat-button (click)="requestDelete()" class="delete-button">DELETE</button>
+    </mat-card-actions>
+</mat-card>

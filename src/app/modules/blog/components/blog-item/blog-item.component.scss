@@ -1,0 +1,14 @@
+li {
+    list-style-type: none;
+}
+
+.blog-card {
+    background-color: #E7F6F2;
+    margin: 3% auto;
+    width: 50%;
+}
+
+.blog-card .delete-button:hover {
+    background-color:#F44336;
+    color: white;
+}

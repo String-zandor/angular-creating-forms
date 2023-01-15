@@ -13,6 +13,7 @@ export class BlogFormComponent implements OnInit {
   status: string = 'NEW';
   blogForEdit?: Blog;
   blogForm: FormGroup = this.fb.group({
+    id: [0],
     title: [''],
     description: [''],
     author: [''],

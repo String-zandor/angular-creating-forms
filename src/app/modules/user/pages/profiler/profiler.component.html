@@ -1,31 +1,26 @@
-<h2>Form</h2>
-<div>
-    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
-        <table>
-            <tr>
-                <td><label for="name">Name: </label></td>
-                <td><input type="text" id="name" formControlName="name" /></td>
-            </tr>
-            <tr>
-                <td><label for="email">Email Address: </label></td>
-                <td><input type="text" id="email" formControlName="email" /></td>
-            </tr>
-            <tr>
-                <td><label for="bio">Bio: </label></td>
-                <td><input type="text" id="bio" formControlName="bio" /></td>
-            </tr>
-            <tr>
-                <td><label for="active">Active: </label></td>
-                <td><input type="checkbox" id="active" formControlName="active" /></td>
-            </tr>
-        </table>
-        <br>
-        <button type="submit">Save</button>
-        <button type="button" (click)="clear()">Clear</button>
-
-    </form>
-
-</div>
-<div>
-
-</div>
+<mat-card class="profiler-card">
+    <mat-card-header>
+        <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name"/>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Email Address</mat-label>
+            <input matInput formControlName="email" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Bio</mat-label>
+            <input matInput formControlName="bio">
+        </mat-form-field>
+        <mat-checkbox formControlName="active">Active</mat-checkbox>
+    </mat-card-content>
+    <mat-card-actions align="end" >
+        <button mat-button type="submit">SAVE</button>
+        <button mat-button type="button" (click)="clear()">CLEAR</button>
+    </mat-card-actions>
+</form>
+</mat-card>

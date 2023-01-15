@@ -1,4 +1,41 @@
-<h2>{{status}} BOOK</h2>
+<mat-card class="book-form-card">
+    <mat-card-header>{{status}} BOOK</mat-card-header>
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <mat-card-content>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" />
+            </mat-form-field>
+            <div formArrayName="authors" >
+                <label for="authors">Authors:</label>
+                <div *ngFor="let _ of authors.controls; let i = index">
+                    <mat-form-field class="author-field" appearance="fill">
+                        <input matInput [formControlName]="i" />
+                    </mat-form-field>
+                    <button type="button" mat-mini-fab (click)="deleteAuthor(i)" >
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+                <button type="button" mat-mini-fab (click)="addAuthor()" >
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>ISBN</mat-label>
+                <input matInput formControlName="isbn" />
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button type="submit">SAVE</button>
+    <button mat-button type="button" (click)="clear()" >CLEAR</button>
+        </mat-card-actions>
+    </form>
+</mat-card>
+
+
+
+<!-- <h2>{{status}} BOOK</h2>
 <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
     <label for="name">Name:</label>
     <input id="name" type="text" formControlName="name" />
@@ -20,4 +57,4 @@
 
     <button type="submit">Save</button>
     <button type="button" (click)="clear()" >Clear</button>
-</form>
+</form> -->

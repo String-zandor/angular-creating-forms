@@ -4,6 +4,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { CommandBarComponent } from './components/command-bar/command-bar.component';
 import { RouterModule } from '@angular/router';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 
 @NgModule({
@@ -13,7 +16,9 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatButtonModule,
+    MatDividerModule
   ],
   exports: [
     HeaderComponent,
