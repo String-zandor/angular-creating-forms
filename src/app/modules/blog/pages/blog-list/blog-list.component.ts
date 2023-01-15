@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from '../../models/blog';
 import { BlogService } from '../../services/blog.service';
 
@@ -11,7 +12,7 @@ export class BlogListComponent implements OnInit {
 
   blogs: Blog[] = [];
 
-  constructor(private blogService: BlogService) { }
+  constructor(private blogService: BlogService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getBlogs();
@@ -22,11 +23,19 @@ export class BlogListComponent implements OnInit {
   }
 
   edit(id: number):void {
-    console.log(`Blog with id=${id} for editing...`)
+    this.router.navigate(['form', id], { relativeTo: this.route });
   }
 
-  delete(id: number) {
+  delete(id: number): void {
     console.log(`Blog with id=${id} for deletion...`)
+  }
+
+  add(): void {
+    this.router.navigate(['form'], { relativeTo: this.route });
+  }
+
+  deleteAll(): void {
+    console.log('Deleting all blogs...')
   }
 
 }

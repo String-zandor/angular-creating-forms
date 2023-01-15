@@ -1,0 +1,23 @@
+<h2>{{status}} BOOK</h2>
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input id="name" type="text" formControlName="name" />
+    <br><br>
+
+    <div formArrayName="authors" >
+        <label for="authors">Authors:</label> <br>
+        <div *ngFor="let _ of authors.controls; let i = index">
+            <input type="text" [formControlName]="i" />
+            <button type="button" (click)="deleteAuthor(i)" >Delete</button>
+        </div>
+        <button type="button" (click)="addAuthor()" >+ Author</button>
+    </div>
+    <br><br>
+
+    <label for="isbn">ISBN:</label>
+    <input id="isbn" type="text" formControlName="isbn" />
+    <br><br>
+
+    <button type="submit">Save</button>
+    <button type="button" (click)="clear()" >Clear</button>
+</form>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../../models/user';
 
 @Component({
@@ -7,20 +8,21 @@ import { User } from '../../models/user';
   styleUrls: ['./profiler.component.scss']
 })
 export class ProfilerComponent {
-  users: User[] = [];
+  profileForm: FormGroup = this.fb.group({
+    name: [''],
+    email: [''],
+    bio: [''],
+    active: [false]
+  })
 
-  user: User = new Profile();
+  constructor(private fb: FormBuilder) {}
 
-  addUser(): void {
-    this.users.push(this.user);
-    this.user = new Profile();
-    console.log(this.users);
+  onSubmit(): void {
+    console.log(this.profileForm.value);
   }
-}
 
-class Profile implements User {
-  email = '';
-  name = '';
-  bio = '';
-  active = false;
+  clear(): void {
+    this.profileForm.reset();
+  }
+
 }

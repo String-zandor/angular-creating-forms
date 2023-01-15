@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-command-bar',
@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./command-bar.component.scss']
 })
 export class CommandBarComponent {
+
+  @Output() add = new EventEmitter();
+
+  @Output() deleteAll = new EventEmitter();
+
+  requestAdd(): void {
+    this.add.emit();
+  }
+
+  requestDeleteAll(): void {
+    this.deleteAll.emit();
+  }
 
 }
